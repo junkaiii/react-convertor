@@ -15,18 +15,27 @@ class App extends React.Component {
   update(event){
     let input = event.target.value
     this.setState({
-      multiplier: ReactDOM.findDOMNode(this.refs.multiplier).value,
-      value: ReactDOM.findDOMNode(this.refs.value).value
+    //  result: ReactDOM.findDOMNode(this.refs.multiplier).value * ReactDOM.findDOMNode(this.refs.value).value
+      result: this._mul.value * this._val.value
     })
   }
+
+  // render(){
+  //   return (
+  //     <div>
+  //     <input type="text" ref="multiplier" className="multiplier" onChange={this.update}></input>
+  //     <input type="text" ref="value" className="value" onChange={this.update} /></input>
+  //     <p>{this.state.result}</p>
+  //     </div>
+  //   )
+  // }
 
   render(){
     return (
       <div>
-      <input type="text" ref="multiplier" className="multiplier" onChange={this.update} value={this.state.multiplier}></input>
-      <p>{this.state.multiplier}</p>
-      <input type="text" ref="value" className="value" onChange={this.update} value={this.state.value}></input>
-      <p>{this.state.value}</p>
+      <input type="text" ref={(abc) => this._mul = abc} className="multiplier" onChange={this.update} />
+      <input type="text" ref={(input) => this._val = input} className="value" onChange={this.update} />
+      <p>{this.state.result}</p>
       </div>
     )
   }
